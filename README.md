@@ -1,3 +1,9 @@
+# This is a fork of nana library for RadioStream purposes
+Changes:
+- works properly when building with Visual Studio compiler
+
+
+
 # Nana C++ Library 
 [Linux (gcc 5.4.0 and 4.9.2)![TravisCI build status](https://travis-ci.org/cnjinhao/nana.svg)](https://travis-ci.org/cnjinhao/nana)  including [(nana-demos)](https://github.com/qPCR4vir/nana-demo)
 
