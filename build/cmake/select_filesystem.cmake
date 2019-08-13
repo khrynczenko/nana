@@ -18,7 +18,9 @@ option(NANA_CMAKE_BOOST_FILESYSTEM_FORCE "Force use of Boost filesystem if avail
 option(NANA_CMAKE_FIND_BOOST_FILESYSTEM "Search: Is Boost filesystem available?" OFF)
 
 if(NANA_CMAKE_NANA_FILESYSTEM_FORCE)
-    target_compile_definitions(nana PUBLIC NANA_FILESYSTEM_FORCE)
+    if (NOT ${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC)
+		target_link_libraries     (nana PUBLIC stdc++fs)
+	endif()
 
 elseif(NANA_CMAKE_STD_FILESYSTEM_FORCE)
     target_compile_definitions(nana PUBLIC STD_FILESYSTEM_FORCE)
@@ -44,7 +46,11 @@ elseif(NANA_CMAKE_BOOST_FILESYSTEM_FORCE)
 
 else()
     # todo   test for std    (for now just force nana or boost if there no std)
-    target_link_libraries     (nana PUBLIC stdc++fs)
+	if (NOT ${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC)
+		target_link_libraries     (nana PUBLIC stdc++fs)
+	endif()
+
+
 
     # todo if not test for boost
     # if not add nana filesystem
